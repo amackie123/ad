@@ -3,8 +3,12 @@
 
 - name: Install multiple packages
   win_chocolatey:
-    name: '{{ item }}'
-    state: present
+    name: "{{ item.name }}"
+    params: "{{ item.param }}"
+    state: latest
+#  when: ansible_distribution == "Microsoft Windows Server 2012 R2 Standard"
   with_items:
-  - "{{package_name}}"
+    - "{{ target_packages }}"
+  tags:
+    - install_package
 

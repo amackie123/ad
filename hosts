@@ -7,6 +7,8 @@ timeout=60
 ansible_become=yes
 ansible_ssh_user=ec2-user
 
+[all:vars]
+GUID=158c
 
 [GenericExample:children]
 towers
@@ -16,37 +18,34 @@ appdbs
 windows
 support
 
-[all:vars]
-GUID=a446
-
 [towers]
 ## These are the towers
-tower1.a446.internal public_host_name=tower1.a446.example.opentlc.com ssh_host=ec2-34-228-106-134.compute-1.amazonaws.com
-tower2.a446.internal public_host_name=tower2.a446.example.opentlc.com ssh_host=ec2-52-207-128-161.compute-1.amazonaws.com
-tower3.a446.internal public_host_name=tower3.a446.example.opentlc.com ssh_host=ec2-35-168-128-109.compute-1.amazonaws.com
+tower1.158c.internal public_host_name=tower1.158c.example.opentlc.com ssh_host=ec2-13-229-171-125.ap-southeast-1.compute.amazonaws.com
+tower2.158c.internal public_host_name=tower2.158c.example.opentlc.com ssh_host=ec2-13-250-232-92.ap-southeast-1.compute.amazonaws.com
+tower3.158c.internal public_host_name=tower3.158c.example.opentlc.com ssh_host=ec2-13-250-219-104.ap-southeast-1.compute.amazonaws.com
 
 [frontends]
 ## These are the frontends
-frontend1.a446.internal ssh_host=ec2-52-54-179-251.compute-1.amazonaws.com
+frontend1.158c.internal ssh_host=ec2-13-250-217-151.ap-southeast-1.compute.amazonaws.com
 
 [apps]
 ## These are the apps
-app1.a446.internal ssh_host=ec2-35-172-147-215.compute-1.amazonaws.com
-app2.a446.internal ssh_host=ec2-52-21-11-20.compute-1.amazonaws.com
+app1.158c.internal ssh_host=ec2-13-250-221-187.ap-southeast-1.compute.amazonaws.com
+app2.158c.internal ssh_host=ec2-13-250-151-155.ap-southeast-1.compute.amazonaws.com
 
 [appdbs]
 ## These are the appdbs
-appdb1.a446.internal ssh_host=ec2-35-169-22-159.compute-1.amazonaws.com
+appdb1.158c.internal ssh_host=ec2-13-250-223-180.ap-southeast-1.compute.amazonaws.com
 
 [windows]
 ## These are the activedirectory servers
-ad1.a446.internal ssh_host=ad1.a446.example.opentlc.com ansible_password=jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
+ad1.158c.internal ssh_host=ad1.158c.example.opentlc.com ansible_password=jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
 
 
 ## These are the supporthosts
 [support]
-support1.a446.internal ssh_host=ec2-34-206-70-253.compute-1.amazonaws.com
-support2.a446.internal ssh_host=ec2-54-156-248-161.compute-1.amazonaws.com
+support1.158c.internal ssh_host=ec2-13-250-161-205.ap-southeast-1.compute.amazonaws.com
+support2.158c.internal ssh_host=ec2-13-250-217-117.ap-southeast-1.compute.amazonaws.com
 
 [windows:vars]
 ansible_connection=winrm

@@ -1,0 +1,11 @@
+---
+
+- name: add users to active directory
+  hosts: windows
+  become: yes
+  gather_facts: false
+  vars_files:
+    - user_vars.yml
+  roles:
+    - {name: win_ad_user, target_users: "{{ user_info }}", tags: 'create_user'}
+

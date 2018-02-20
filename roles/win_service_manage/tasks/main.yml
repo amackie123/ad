@@ -3,8 +3,12 @@
 
 - name: set the log on user to Network Service
   win_service:
-    name: "{{package_name}}"
-    state: restarted
-    username: "{{ansible_user}}"
-    password: "{{ansible_password}}"
+    name: "{{ item.name }}"
+    start_mode: auto
+    state: started 
+#  when: ansible_distribution == "Microsoft Windows Server 2012 R2 Standard"
+  with_items:
+    - "{{ target_services }}"
+  tags:
+    - enable_service 
 
