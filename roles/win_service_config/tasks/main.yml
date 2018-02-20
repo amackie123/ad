@@ -1,0 +1,12 @@
+---
+# tasks file for win_service_config
+
+- name: install and configure packages
+  debug:
+    msg: "running the role"
+  tasks:
+    - include_roles:
+      - win_package_install
+      - win_service_manage
+      - win_firewall
+

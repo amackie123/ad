@@ -1,0 +1,22 @@
+---
+# tasks file for win_ad_install
+
+- name: enable the windows active directory feature
+  win_feature:
+    name: AD-Domain-Services
+    state: present
+
+- name: configure the windows domain
+  win_domain:
+    dns_domain_name: "{{ad_domain_name}}"
+    safe_mode_password: "{{ad_safe_mode_password}}"
+  register: update_result
+- win_reboot:
+  when: update_result.reboot_required
+
+- name: query for the windows domain name
+  win_command: nltest /dclist:"{{ ad_domain_name }}"
+  register: domain_name
+- name: Show the current windows domain
+  debug:
+    msg: "current domain is {{domain_name.stdout}}"

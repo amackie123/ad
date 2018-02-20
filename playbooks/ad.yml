@@ -1,0 +1,11 @@
+---
+
+- name: install active directory on a windows host
+  hosts: windows
+  become: yes
+  gather_facts: false
+  vars_files:
+    - ad_vars.yml
+  roles:
+  - win_ad_install
+

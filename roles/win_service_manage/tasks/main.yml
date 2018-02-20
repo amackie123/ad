@@ -1,0 +1,10 @@
+---
+# tasks file for win_service_manage
+
+- name: set the log on user to Network Service
+  win_service:
+    name: "{{package_name}}"
+    state: restarted
+    username: "{{ansible_user}}"
+    password: "{{ansible_password}}"
+

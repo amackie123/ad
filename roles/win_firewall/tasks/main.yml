@@ -1,0 +1,13 @@
+---
+# tasks file for win_firewall
+
+- name: Firewall rule to allow {{service_name}} on {{protocol_name}} port {{local_port}}
+  win_firewall_rule:
+    name: "{{service_name}}"
+    localport: "{{local_port}}"
+    action: allow
+    direction: in
+    protocol: "{{protocol_name}}"
+    state: present
+    enabled: yes
+
